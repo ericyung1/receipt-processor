@@ -6,7 +6,7 @@ def alphanumeric_length(s):
     return len(re.sub(r'[^a-zA-Z0-9]', '', s))
 
 def is_round_dollar(price):
-    return float(price).is_integer()
+    return float(price) == int(float(price))
 
 def is_multiple_of_quarter(price):
     return float(price) % 0.25 == 0
