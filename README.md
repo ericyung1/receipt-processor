@@ -23,13 +23,49 @@ docker build -t receipt-processor .
 docker run -p 8000:8000 receipt-processor
 ```
 ### 4. API Usage
-  * Process a receipt  
-    **POST**  
+  * **POST** Process a receipt  
     `http://localhost:8000/receipts/process`  
     Pass in a JSON receipt in the request body
-  * Get points by ID
-    **GET**  
+
+
+    Sample Payload:
+    ```
+    {
+      "retailer": "Target",
+      "purchaseDate": "2022-01-01",
+      "purchaseTime": "13:01",
+      "items": [
+        {
+          "shortDescription": "Mountain Dew 12PK",
+          "price": "6.49"
+        },
+        {
+          "shortDescription": "Emils Cheese Pizza",
+          "price": "12.25"
+        }
+      ],
+      "total": "18.74"
+    }
+    ```
+    Sample Response:
+    ```
+    {
+      "id": "3d2cbd94-31b4-4698-9766-19e8e2e5c55c"
+    }
+    ```
+
+  * **GET** Get points by ID  
     `http://localhost:8000/receipts/<id>/points`
+
+
+    Sample Request:  
+    `http://localhost:8000/receipts/3d2cbd94-31b4-4698-9766-19e8e2e5c55c/points`  
+    Sample Response:
+    ```
+    {
+      "points": 109
+    }
+    ```
 ## API Test Results
 
 ### GET Request Example
