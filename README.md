@@ -9,7 +9,7 @@ Follow the instructions below to run the project using Docker.
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/your-username/receipt-processor.git
+git clone https://github.com/<your-username>/receipt-processor.git
 cd receipt-processor
 ```
 
@@ -22,7 +22,14 @@ docker build -t receipt-processor .
 ```
 docker run -p 8000:8000 receipt-processor
 ```
-
+### 4. API Usage
+  * Process a receipt  
+    **POST**  
+    `http://localhost:8000/receipts/process`  
+    Pass in a JSON receipt in the request body
+  * Get points by ID
+    **GET**  
+    `http://localhost:8000/receipts/<id>/points`
 ## API Test Results
 
 ### GET Request Example
